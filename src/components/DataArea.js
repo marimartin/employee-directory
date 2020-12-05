@@ -72,15 +72,18 @@ export default class DataArea extends Component {
         console.log(event.target.value);
         const filter = event.target.value;
         const filteredList = this.state.users.filter(item => {
-            console.log(JSON.stringify(Object.values(item)
-                .join("")
-                .toLowerCase()))
+            // console.log(JSON.stringify(Object.values(item)
+            //     .join("")
+            //     .toLowerCase()))
             // merge data together, then see if user input is anywhere inside
+            // takes the whole user object and merges all the values together and makes them lowercase
             let values = Object.values(item)
                 .join("")
                 .toLowerCase();
+            // if search does not match anything in values, no user is returned
             return values.indexOf(filter.toLowerCase()) !== -1;
         });
+        // if there is a match, then the user is added to the filtered list and it is displayed
         this.setState({ filteredUsers: filteredList });
     }
 
@@ -97,6 +100,7 @@ export default class DataArea extends Component {
     render() {
         return (
             <>
+                {/* handle search inside curly braces refers to line 71, other handle search is from searchbox.js */}
                 <Nav handleSearchChange={this.handleSearchChange} />
                 <div className="data-area">
                     <DataTable
