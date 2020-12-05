@@ -5,6 +5,7 @@ function Wrapper({ children }) {
     return (
         <div className="wrapper">
             {children}
+            {/* wraps header and main */}
         </div>
     );
 }
